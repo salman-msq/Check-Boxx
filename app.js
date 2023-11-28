@@ -24,7 +24,17 @@ app.use('/api/', AuthMiddleware, apiProtected);
 app.get('/', (req, res) => {
     app.use(express.static(path.resolve(path.dirname(fileURLToPath(import.meta.url)), 'client', 'build')));
     res.sendFile(path.resolve(path.dirname(fileURLToPath(import.meta.url)), 'client', 'build', 'index.html'));
-})
+});
+
+app.get('/login', (req, res) => {
+    app.use(express.static(path.resolve(path.dirname(fileURLToPath(import.meta.url)), 'client', 'build')));
+    res.sendFile(path.resolve(path.dirname(fileURLToPath(import.meta.url)), 'client', 'build', 'index.html'));
+});
+
+app.get('/register', (req, res) => {
+    app.use(express.static(path.resolve(path.dirname(fileURLToPath(import.meta.url)), 'client', 'build')));
+    res.sendFile(path.resolve(path.dirname(fileURLToPath(import.meta.url)), 'client', 'build', 'index.html'));
+});
 
 const PORT = 7000;
 app.listen(PORT, () => console.log('Server Started'));

@@ -11,7 +11,7 @@ const Login = async (req, res) => {
     if (errors.isEmpty()) {
         const { username, password } = req.body;
 
-        const user = await User.findOne({ username: username });
+        const user = await User.findOne({ $or: [{ email: username }, { username: username }]  });
 
         if (!user) {
             return res.json(jsonGenerate(StatusCode.UNPROCESSABLE_ENTITY, "Username or password is incorrect!"));
